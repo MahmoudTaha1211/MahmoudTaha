@@ -11,15 +11,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        /*
+          The 'background-attachment: fixed' property can cause issues on iOS devices.
+          To fix this, we remove the background from the body and apply it to a 
+          '::before' pseudo-element with a fixed position. This creates the same visual 
+          effect but avoids the iOS bug.
+        */
         body {
             font-family: 'Readex Pro', sans-serif;
-            /* High-quality background image */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1; /* Place the background behind all other content */
             background-image: url('https://i.ibb.co/BVT1gLj3/5b77a7be65a8862eaf3573130862413d-Photo-Grid-Photo-Grid.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             background-repeat: no-repeat;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
         
         /* Glassmorphism effect for content cards */
